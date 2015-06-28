@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+/// <summary>
+/// Movetrampoline.
+/// 動いて弾が強力に反射する
+/// </summary>
 public class movetrampoline : MonoBehaviour {
 
 	
@@ -17,12 +20,15 @@ public class movetrampoline : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		//右に移動しているなら
 		if (RorL) {
 			this.transform.position+=movevec;
 			if(this.transform.position.x>maxmove.x){
 				RorL=false;
 			}
-		} else {
+		} 
+		//左に移動しているなら
+		else {
 			this.transform.position-=movevec;
 			if(this.transform.position.x<-maxmove.x){
 				RorL=true;

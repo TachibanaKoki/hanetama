@@ -9,23 +9,33 @@ public class Pinpon : MonoBehaviour {
 	private Ray ray;
 	private RaycastHit hit;
 	private Text text;
+	private Vector3 statePos;
 	static public  bool isShot=false;
 	// Use this for initialization
 	void Start () {
-		body = gameObject.GetComponent<Rigidbody> ();
+		body = this.GetComponent<Rigidbody> ();
 		text = GameObject.Find ("resettext").GetComponent<Text>();
-		isShot=false;
+		statePos = this.gameObject.transform.position;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 	}
 
+	public void PosReset(){
+		body.useGravity = false;
+		body.velocity = Vector3.zero;
+		Pinpon.isShot = false;
+		text.text="SHOT!";
+		this.gameObject.transform.position = statePos;
+	}
+
 	public void Shot(){
-		if (isShot==false) {
+		//弾が発射されていなければ発射する
+		if (Pinpon.isShot==false) {
 			body.AddForce (power);
 			body.useGravity = true;
-			isShot = true;
+			Pinpon.isShot = true;
 			text.text="RETRY";
 		}
 	}

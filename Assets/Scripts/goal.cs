@@ -14,6 +14,7 @@ public class goal : MonoBehaviour {
 	}
 
 	void OnCollisionEnter(Collision col){
+		//ボールに当たればゲームクリア
 		if (col.collider.tag == "ball") {
 			GameManager.ClearFlag=true;
 			Debug.Log("clear");

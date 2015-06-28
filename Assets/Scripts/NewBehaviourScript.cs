@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+/// <summary>
+///接触したらやり直し 
+/// </summary>
 public class NewBehaviourScript : MonoBehaviour {
 
 	// Use this for initialization
@@ -13,6 +15,7 @@ public class NewBehaviourScript : MonoBehaviour {
 	
 	}
 	void OnCollisionEnter(Collision col){
+		//ボールに当たればシーンをリセット
 		if (col.collider.tag == "ball") {
 			GameManager.scenenumber--;
 			Pinpon.isShot=false;

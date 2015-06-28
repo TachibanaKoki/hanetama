@@ -12,11 +12,9 @@ public class trampoline : MonoBehaviour {
 	}
 
 	void OnCollisionEnter(Collision col){
-		
+		//弾と接触すれば上に飛ばす
 		if (col.collider.tag == "ball") {
 			rig.AddForce(Power);
 		}
 	}
-
-
 }

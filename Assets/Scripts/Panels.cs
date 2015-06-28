@@ -15,9 +15,7 @@ public class Panels : MonoBehaviour {
 			float x = Input.mousePosition.x;
 			float y = Input.mousePosition.y;
 		
-			//オブジェクトの座標からマウス位置(つまりクリックした位置)を引いている。
-			//これでオブジェクトの位置とマウスクリックの位置の差が取得できる。
-			//ドラッグで移動したときのずれを補正するための計算だと考えれば分かりやすい
+
 			offset = transform.position - Camera.main.ScreenToWorldPoint (new Vector3 (x, y, screenPoint.z));
 		}
 	}
