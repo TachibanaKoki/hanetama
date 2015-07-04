@@ -10,8 +10,8 @@ public class GameManager : MonoBehaviour {
 
 	static public int scenenumber=0;
 
-	private bool opAnim;//スタート時のアニメーションフラグ
-	private static bool animcheck=false;//新しいシーンの読み込み時にアニメーションをさせる
+	private  bool opAnim;//スタート時のアニメーションフラグ
+	public static bool animcheck=false;//新しいシーンの読み込み時にアニメーションをさせる
 	private float timecount;
 	private Pinpon pinpon;
 
@@ -33,12 +33,14 @@ public class GameManager : MonoBehaviour {
 
 	public void NextScene(){
 		Pinpon.isShot = false;
+		animcheck = false;
 		//次のシーンを読み込み
 		Application.LoadLevel ("main "+(scenenumber));
 	}
 	public void ReTitle(){
 		scenenumber = 0;
 		Pinpon.isShot = false;
+		animcheck = false;
 		//タイトルに飛ぶ
 		Application.LoadLevel ("taitle");
 	}
@@ -54,7 +56,7 @@ public class GameManager : MonoBehaviour {
 		else
 			opAnim = false;
 		timecount = 0;
-
+		Pinpon.isShot = false;
 		scenenumber++;
 
 	}
@@ -74,6 +76,7 @@ public class GameManager : MonoBehaviour {
 			timecount+=Time.deltaTime;
 			if(timecount>3.0f){
 				opAnim=false;
+				animcheck=true;
 				pinpon.PosReset();
 			}
 			return;
